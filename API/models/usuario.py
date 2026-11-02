@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from sqlalchemy import String, func
 from sqlalchemy.orm import Mapped, mapped_column
 from database import Base
@@ -12,5 +12,5 @@ class Usuario(Base):
     usu_email: Mapped[str] = mapped_column(String(255), unique=True)
     usu_senha: Mapped[str] = mapped_column(String(255))
     usu_status: Mapped[str] = mapped_column(String(1), server_default="A")
-    data_cadastro: Mapped[datetime] = mapped_column(server_default=func.now()
-    data_nascimento: Mapped[date] = mapped_column())
+    data_cadastro: Mapped[datetime] = mapped_column(server_default=func.now())
+    data_nascimento: Mapped[date] = mapped_column()
