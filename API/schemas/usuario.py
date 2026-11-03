@@ -2,7 +2,7 @@ from datetime import date, datetime
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 
-class UsuarioEntrada(BaseModel):
+class UsuarioRequest(BaseModel):
     nome: str = Field(min_length=3, max_length=100)
     email: EmailStr
     senha: str = Field(min_length=8)
@@ -10,7 +10,7 @@ class UsuarioEntrada(BaseModel):
     login: str = Field(min_length=3, max_length=50)
 
 
-class UsuarioSaida(BaseModel):
+class UsuarioResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     usu_id: int
@@ -20,3 +20,14 @@ class UsuarioSaida(BaseModel):
     usu_status: str
     data_cadastro: datetime
     data_nascimento: date
+
+
+class Login(BaseModel):
+    login: str = Field(max_length=50)
+    senha: str
+
+
+class TokenLogin(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    usuario: UsuarioResponse
