@@ -39,7 +39,7 @@ export default defineConfig((/* ctx */) => {
       // https://v2.quasar.dev/quasar-cli-vite/page-routing-with-vue-router#filename-based-routing
       // filenameBasedRouting: true,
 
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
       // vueRouterBase,
 
       // publicPath: '/',
@@ -143,39 +143,12 @@ export default defineConfig((/* ctx */) => {
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-ssg/configuring-ssg
     ssg: {
-      // onSsgRendererError: 'abort',
-      // ssgRendererConcurrency: 1,
-      // ssgRendererRetryCount: 0,
-      // ssgRendererRetryDelay: 1000,
-      // ssgRendererDirectoryIndexes: true,
-      // error404HtmlFilename: '404.html',
-      // clientSideRenderingHtmlFilename: 'csr.html',
-      // clientSideRenderingRoutes: [],
-      // noPreloadTagRoutes: []
-      // extendSSGRendererConf (rolldownConf) {},
-      // extendSSGManifestJson (json) {},
-      // manualStoreSerialization: true,
-      // manualStoreSsrContextInjection: true,
-      // manualStoreHydration: true,
-      // manualPostHydrationTrigger: true,
-      // pwa: true,
-      // pwaOfflineHtmlFilename: 'offline.html',
-      // extendSSGGenerateSWOptions (cfg) {},
-      // extendSSGInjectManifestOptions (cfg) {},
+   
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-pwa/configuring-pwa
     pwa: {
       workboxMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
-      // swFilename: 'sw.js',
-      // manifestFilename: 'manifest.json',
-      // extendPWAManifestJson (json) {},
-      // useCredentialsForManifestTag: true,
-      // injectPWAMetaTags: false,
-      // extendPWACustomSWConf (rolldownConf) {},
-      // extendPWAGenerateSWOptions (cfg) {},
-      // extendPWAInjectManifestOptions (cfg) {},
-      // extendPWASwTsConfig (tsConfig) {}
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-cordova-apps/configuring-cordova

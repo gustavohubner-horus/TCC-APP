@@ -8,7 +8,10 @@ const routes = [
     ],
   },
 
-  // Always leave this as last one,
+  {
+    path: '/login',
+    component: () => import('../pages/LoginPage.vue')
+  },
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',
