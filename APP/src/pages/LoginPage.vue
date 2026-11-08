@@ -66,6 +66,7 @@
             rounded
             class="full-width q-mb-md"
             size="lg"
+            to="/cadastro"
           />
 
           <div class="text-center q-mt-md">

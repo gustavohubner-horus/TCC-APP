@@ -2,8 +2,11 @@
   <q-layout view="hHh lpR fFf">
   <q-header class="bg-white text-dark">
     <q-toolbar class="q-px-xs">
+      <q-btn flat round @click="sair">
+        <q-icon name="logout" style="transform: scaleX(-1)" />
+      </q-btn>
       <q-space />
-      <q-btn flat no-caps icon-right="account_circle" label="Gustavo" class="text-subtitle1" />
+      <q-btn flat no-caps icon-right="account_circle" :label="authStore.usuario?.usu_nome?.split(' ')[0]" class="text-subtitle1" />
     </q-toolbar>
   </q-header>
 
@@ -30,3 +33,16 @@
     </q-page-container>
   </q-layout>
 </template>
+
+<script setup>
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/auth-store'
+
+const router = useRouter()
+const authStore = useAuthStore()
+
+function sair() {
+  authStore.sair()
+  router.push('/login')
+}
+</script>
