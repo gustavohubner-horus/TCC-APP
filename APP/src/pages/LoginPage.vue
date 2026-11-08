@@ -9,7 +9,7 @@
             </q-avatar>
           </div>
 
-            <q-input
+          <q-input
             v-model="login"
             label="Login"
             outlined
@@ -17,54 +17,66 @@
             color="primary"
             class="q-mb-md"
             bg-color="white"
-            >
+            autocomplete="off"
+          >
             <template #prepend>
-                <q-icon name="person" />
+              <q-icon name="person" />
             </template>
-            </q-input>
+          </q-input>
 
-            <q-input 
-              v-model="password" 
-              label="Senha" 
-              type="password" 
-              outlined 
-              rounded
-              color="primary" 
-              class="q-mb-md" 
-              bg-color="white"
-            >
-              <template #prepend>
-                <q-icon name="lock" />
-              </template>
-            </q-input>
+          <q-input
+            v-model="Senha"
+            label="Senha"
+            :type="exibirSenha ? 'text' : 'password'"
+            outlined
+            rounded
+            color="primary"
+            class="q-mb-md"
+            bg-color="white"
+            autocomplete="new-password"
+          >
+            <template #prepend>
+              <q-icon name="lock" />
+            </template>
 
-            <q-btn 
-              label="Entrar" 
-              color="primary" 
-              class="full-width q-mb-md" 
-              size="lg" 
-              rounded
-              unelevated 
-            />
-
-            <q-btn 
-              label="Cadastrar-se" 
-              color="primary" 
-              outline 
-              rounded
-              class="full-width q-mb-md" 
-              size="lg" 
-            />
-            
-            <div class="text-center q-mt-md">
-              <q-btn 
-                flat 
-                color="primary" 
-                label="Esqueceu a senha?" 
-                class="text-weight-bold"
-                no-caps
+            <template #append>
+              <q-icon
+                :name="exibirSenha ? 'visibility' : 'visibility_off'"
+                class="cursor-pointer"
+                @click="exibirSenha = !exibirSenha"
               />
-            </div>
+            </template>
+          </q-input>
+
+          <q-btn
+            label="Entrar"
+            color="primary"
+            class="full-width q-mb-md"
+            size="lg"
+            rounded
+            unelevated
+            :loading="authStore.loading"
+            @click="entrar"
+          />
+
+          <q-btn
+            label="Cadastrar-se"
+            color="primary"
+            outline
+            rounded
+            class="full-width q-mb-md"
+            size="lg"
+          />
+
+          <div class="text-center q-mt-md">
+            <q-btn
+              flat
+              color="primary"
+              label="Esqueceu a senha?"
+              class="text-weight-bold"
+              no-caps
+            />
+          </div>
 
         </q-card>
       </q-page>
@@ -74,7 +86,24 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useQuasar } from 'quasar'
+import { useAuthStore } from '@/stores/auth-store'
 
 const login = ref('')
-const password = ref('')
+const Senha = ref('')
+const exibirSenha = ref(false)
+
+const router = useRouter()
+const $q = useQuasar()
+const authStore = useAuthStore()
+
+async function entrar() {
+  try {
+    await authStore.entrar(login.value, Senha.value)
+    router.push('/')
+  } catch {
+    $q.notify({ type: 'negative', message: authStore.error })
+  }
+}
 </script>

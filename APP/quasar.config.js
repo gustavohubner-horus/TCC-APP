@@ -5,15 +5,7 @@ import { defineConfig } from '#q-app'
 
 export default defineConfig((/* ctx */) => {
   return {
-    // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
-    // preFetch: true,
-
-    // app boot file (/src/boot)
-    // --> boot files are part of "main.js"
-    // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: [],
-
-    // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
+    boot: ['axios'],
     css: ['app.scss'],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
@@ -92,7 +84,7 @@ export default defineConfig((/* ctx */) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ['Notify'],
     },
 
     // animations: 'all', // --- includes all animations
