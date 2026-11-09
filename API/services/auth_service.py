@@ -4,9 +4,12 @@ from sqlalchemy.orm import Session
 from models.usuario import Usuario
 from schemas.usuario import UsuarioRequest, Login
 from datetime import datetime, timedelta, timezone
-import os
+import os 
 import jwt
 from dotenv import load_dotenv
+from fastapi import HTTPException, Depends
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from database import get_db
 
 password_hash = PasswordHash.recommended()
 load_dotenv()
@@ -49,3 +52,23 @@ def validar_login(db: Session, dados: Login) -> dict:
         raise HTTPException(status_code=403, detail="Usuário inativo.")
 
     return {"access_token": gerar_token(usuario.usu_id), "usuario": usuario}
+
+seguranca = HTTPBearer()
+
+def get_usuario_logado(
+    credenciais: HTTPAuthorizationCredentials = Depends(seguranca),
+    db: Session = Depends(get_db),
+) -> Usuario:
+    token = credenciais.credentials
+    try:
+        dados = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITMO])
+        usu_id = int(dados["sub"])
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Sessão expirada. Faça login novamente.")
+    except (jwt.InvalidTokenError, KeyError, ValueError):
+        raise HTTPException(status_code=401, detail="Token inválido.")
+
+    usuario = db.query(Usuario).filter(Usuario.usu_id == usu_id).first()
+    if usuario is None:
+        raise HTTPException(status_code=401, detail="Usuário não encontrado.")
+    return usuario
