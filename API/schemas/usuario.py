@@ -31,3 +31,8 @@ class TokenLogin(BaseModel):
     access_token: str
     token_type: str = "bearer"
     usuario: UsuarioResponse
+
+
+class AlterarSenha(BaseModel):
+    senha_atual: str
+    senha_nova: str = Field(min_length=8)

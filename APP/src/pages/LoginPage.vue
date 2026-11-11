@@ -12,9 +12,7 @@
           <q-input
             v-model="login"
             label="Login"
-            outlined
-            rounded
-            color="primary"
+            outlined            color="primary"
             class="q-mb-md"
             bg-color="white"
             autocomplete="off"
@@ -28,9 +26,7 @@
             v-model="Senha"
             label="Senha"
             :type="exibirSenha ? 'text' : 'password'"
-            outlined
-            rounded
-            color="primary"
+            outlined            color="primary"
             class="q-mb-md"
             bg-color="white"
             autocomplete="new-password"
@@ -52,9 +48,7 @@
             label="Entrar"
             color="primary"
             class="full-width q-mb-md"
-            size="lg"
-            rounded
-            unelevated
+            size="lg"            unelevated
             :loading="authStore.loading"
             @click="entrar"
           />
@@ -62,9 +56,7 @@
           <q-btn
             label="Cadastrar-se"
             color="primary"
-            outline
-            rounded
-            class="full-width q-mb-md"
+            outline            class="full-width q-mb-md"
             size="lg"
             to="/cadastro"
           />
@@ -72,9 +64,8 @@
           <div class="text-center q-mt-md">
             <q-btn
               flat
-              color="primary"
+              color="grey"
               label="Esqueceu a senha?"
-              class="text-weight-bold"
               no-caps
             />
           </div>

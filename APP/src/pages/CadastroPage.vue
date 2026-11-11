@@ -12,7 +12,7 @@
           <q-input
             v-model="nome"
             label="Nome"
-            outlined rounded
+            outlined
             color="primary"
             class="q-mb-md"
             bg-color="white"
@@ -23,7 +23,7 @@
           <q-input
             v-model="login"
             label="Login"
-            outlined rounded
+            outlined
             color="primary"
             class="q-mb-md"
             bg-color="white"
@@ -36,7 +36,7 @@
             v-model="email"
             label="E-mail"
             type="email"
-            outlined rounded
+            outlined
             color="primary"
             class="q-mb-md"
             bg-color="white"
@@ -48,7 +48,7 @@
             v-model="senha"
             label="Senha"
             :type="exibirSenha ? 'text' : 'password'"
-            outlined rounded
+            outlined
             color="primary"
             class="q-mb-md"
             bg-color="white"
@@ -69,7 +69,7 @@
             label="Data de nascimento"
             type="date"
             stack-label
-            outlined rounded
+            outlined
             color="primary"
             class="q-mb-md"
             bg-color="white"
@@ -82,7 +82,7 @@
             color="primary"
             class="full-width q-mb-md"
             size="lg"
-            rounded unelevated
+            unelevated
             :loading="authStore.loading"
             @click="cadastrar"
           />
