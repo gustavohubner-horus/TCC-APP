@@ -48,7 +48,9 @@
             label="Entrar"
             color="primary"
             class="full-width q-mb-md"
-            size="lg"            unelevated
+            size="lg"
+            style="font-size: 14px"
+            unelevated
             :loading="authStore.loading"
             @click="entrar"
           />
@@ -56,8 +58,10 @@
           <q-btn
             label="Cadastrar-se"
             color="primary"
-            outline            class="full-width q-mb-md"
+            outline
+            class="full-width q-mb-md"
             size="lg"
+            style="font-size: 14px"
             to="/cadastro"
           />
 

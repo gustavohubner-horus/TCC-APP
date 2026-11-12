@@ -82,6 +82,7 @@
             color="primary"
             class="full-width q-mb-md"
             size="lg"
+            style="font-size: 14px"
             unelevated
             :loading="authStore.loading"
             @click="cadastrar"
@@ -92,7 +93,6 @@
               flat no-caps
               color="primary"
               label="Já tenho conta"
-              class="text-weight-bold"
               to="/login"
             />
           </div>

@@ -3,8 +3,8 @@ import { api } from '@/boot/axios'
 
 export const useAuthStore = defineStore('auth', {
    state: () => ({
-    usuario: JSON.parse(localStorage.getItem('usuario')),
-    token: localStorage.getItem('token'),
+    usuario: JSON.parse(sessionStorage.getItem('usuario')),
+    token: sessionStorage.getItem('token'),
     loading: false,
     error: null,
   }),
@@ -17,8 +17,8 @@ export const useAuthStore = defineStore('auth', {
         const response = await api.post('/auth/login', { login, senha })
         this.token = response.data.access_token
         this.usuario = response.data.usuario
-        localStorage.setItem('token', this.token)
-        localStorage.setItem('usuario', JSON.stringify(this.usuario))
+        sessionStorage.setItem('token', this.token)
+        sessionStorage.setItem('usuario', JSON.stringify(this.usuario))
         return response.data
       } catch (err) {
         this.error = 'Login ou senha inválidos.'
@@ -32,8 +32,8 @@ export const useAuthStore = defineStore('auth', {
     sair() {
       this.usuario = null
       this.token = null
-      localStorage.removeItem('token')
-      localStorage.removeItem('usuario')
+      sessionStorage.removeItem('token')
+      sessionStorage.removeItem('usuario')
     },
 
     async cadastrar(dados) {
