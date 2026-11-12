@@ -56,5 +56,12 @@ export const useAuthStore = defineStore('auth', {
       }
     },
 
+    async alterarSenha(senhaAtual, senhaNova) {
+      await api.put('/auth/senha', {
+        senha_atual: senhaAtual,
+        senha_nova: senhaNova,
+      })
+    },
+
   },
 })

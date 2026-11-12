@@ -4,7 +4,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic_i18n import PydanticI18n
 
-from routers import ia, auth
+from routers import ia, auth, categoria, limite, gasto, gasto_fixo, grupo
 
 app = FastAPI()
 
@@ -46,3 +46,8 @@ async def erros_validacao(request: Request, exc: RequestValidationError):
 
 app.include_router(ia.router)
 app.include_router(auth.router)
+app.include_router(categoria.router)
+app.include_router(limite.router)
+app.include_router(gasto.router)
+app.include_router(gasto_fixo.router)
+app.include_router(grupo.router)

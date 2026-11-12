@@ -5,7 +5,7 @@ import { defineConfig } from '#q-app'
 
 export default defineConfig((/* ctx */) => {
   return {
-    boot: ['axios'],
+    boot: ['axios', 'apexcharts'],
     css: ['app.scss'],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras

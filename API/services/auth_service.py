@@ -72,3 +72,10 @@ def get_usuario_logado(
     if usuario is None:
         raise HTTPException(status_code=401, detail="Usuário não encontrado.")
     return usuario
+
+
+def alterar_senha(db: Session, usuario: Usuario, senha_atual: str, senha_nova: str) -> None:
+    if not password_hash.verify(senha_atual, usuario.usu_senha):
+        raise HTTPException(status_code=400, detail="Senha atual incorreta.")
+    usuario.usu_senha = password_hash.hash(senha_nova)
+    db.commit()

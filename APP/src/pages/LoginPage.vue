@@ -61,15 +61,6 @@
             to="/cadastro"
           />
 
-          <div class="text-center q-mt-md">
-            <q-btn
-              flat
-              color="grey"
-              label="Esqueceu a senha?"
-              no-caps
-            />
-          </div>
-
         </q-card>
       </q-page>
     </q-page-container>
